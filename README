@@ -1,0 +1,39 @@
+Pentru fiecare operatie din cerinta am implementat o functie corespunzatoare:
+createFS - creeaza un element de tip director cu numele '/' si returneaza un 
+pointer catre acesta
+deleteFS elibereaza memoria alocata pentru directorul primit ca parametru,
+va fi apelata pentru directorul root creeat de functia precedenta
+mkdir primeste ca parametrii directorul parinte si un sir de caractere 
+reprezentand numele directorului ce va fi creeat. Se verifica fiecare caz,
+cand elemenul trebuie inserat la inceput, la sfarsit, sau in interiorul listei 
+pentru ca aceasta sa ramana sortata si se face inserarea cu ajutorul pointerilor
+prev si aux
+containsDir si containsFile sunt functii auxiliare ce verifica daca in 
+directorul curent se afla fisierul respectiv directorul cu numele dat ca 
+parametru
+touch aloca memorie in lista pentru un nou element si insereaza noul element in
+lista referita de parametrul currDir astfel incat sa ramana sortata
+pwd este o functie in care se parcurg directoarele parinte pentru directorul
+si se afiseaza aceasta cale in ordine inversa recursiv
+cd va modifica parametrul currDir sa pointeze spre directorul cu numele dat ca
+parametru sau directorul parinte
+rm verifica daca numele de fisier dat ca parametru se afla in lista de fisiere
+a directorului curent. Daca se afla atunci va efectua o stergere din 
+lista in functie de pozitia acestuia, altfel va afisa un mesaj corespunzator
+tree este o functie recursiva ce afiseaza numele directorului curent si 
+fisierele continute apoi se autoapeleaza pentru fiecare director din lista 
+inidcata de directorul curent, actualizand numarul de spatii ce vor fi afisate
+rmDir porneste de la directorul dat ca parametru si parcurge toate
+subdirectoarele, pana cand va gasi un subdirector care nu mai are subdirectoare
+si va elibera memoria corespunzatoare acestuia si a fisierelor din acesta; apoi
+algoritmul se reia de la directorul initial
+find este asemanatoare functiei tree si parcurge recursiv toate subdirectoarele
+directorului curent, cautand fisierul ce corespunde cu parametrii dati functiei.
+Functia se autoapeleaza pentru toate subdirectoarele directorului curent si se
+opreste cand adancimea este mai mare ca adancimea data ca parametru
+
+In functia main avem un buffer de intrare reprezentat de un sir de caractere in'care se vor citi comanda si parametrii. In continuare avem siruri de caractere 
+pentru numele comenzii si parametrii acesteia obtinuti prin separarea in cuvinte
+a bufferului de intrare. In functie de comanda data se apeleaza functia 
+corespunzatoare comenzii, retinand directorul curent din ierarhia de fisiere in
+variabila currDir
